@@ -1,0 +1,14 @@
+/* .Informations{
+    text-align: center;
+    margin-top: 100px;
+    
+} */
+.Informations{
+    /* border:solid;
+    box-shadow: 10px 5px 5px black;
+    background-color: #78D2EC ;
+    padding: 5px; */
+    display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}

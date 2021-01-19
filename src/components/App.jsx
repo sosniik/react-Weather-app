@@ -5,21 +5,27 @@ import {
   Route,
 } from "react-router-dom";
 import Day from './Day.jsx';
-import Day1 from './day1.jsx'
-import Day2 from './day2.jsx'
 import './App.css';
+import TopNav from './TopNav.jsx'
+import DayDetails from './DayDetails'
 import { useState } from 'react'
 import { useEffect} from 'react'
-import logo from "/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/components/weatherIMG.jpg"
+import logo from '/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/img/logo.png'
+import Footer from './Footer.jsx'
 
-/*
-const name = document.getElementById('name')
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=paris&appid=8508a7c28350e562ec59a3d1a2bb6ee2")
-    .then(res => res.json())
-    .then(data => console.log(data))
-    */
+function getCurrentDate(separator='.'){
 
-   function timestamps(dt){
+  let newDate = new Date()
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
+  
+  return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`
+  }
+
+
+
+function timestamps(dt){
     const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
     let day = (new Date(dt*1000)).getDay()
     //console.log(day)
@@ -61,8 +67,10 @@ function App() {
       <div className="app">
       
         <header className="App-header">
+        <TopNav/>
         <img src={logo} className="logo" alt="logo"/>
         <p className="text">Developed by Léo from 💙  </p>
+        <p>Current date : {getCurrentDate()}</p>
         </header>
 
         <div className='weatherList'>
@@ -71,7 +79,7 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[0].weather[0].icon}.png`}
           label1={weather.daily[0].temp.min}
           label2={weather.daily[0].temp.max}
-          dayweek = "day1"
+          dayweek = "0"
         />
 
         <Day 
@@ -79,7 +87,7 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[1].weather[0].icon}.png`}
           label1={weather.daily[1].temp.min}
           label2={weather.daily[1].temp.max}
-          dayweek = "day2"
+          dayweek = "1"
         />
 
         <Day 
@@ -87,6 +95,7 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[2].weather[0].icon}.png`}
           label1={weather.daily[2].temp.min}
           label2={weather.daily[2].temp.max}
+          dayweek = "2"
         />
   
         <Day 
@@ -94,6 +103,7 @@ function App() {
          image={`http://openweathermap.org/img/wn/${weather.daily[3].weather[0].icon}.png`}
          label1={weather.daily[3].temp.min}
          label2={weather.daily[3].temp.max}
+         dayweek = "3"
         />
 
         <Day 
@@ -101,6 +111,7 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[4].weather[0].icon}.png`}
           label1={weather.daily[4].temp.min}
           label2={weather.daily[4].temp.max}
+          dayweek = "4"
         />
 
         <Day 
@@ -108,6 +119,7 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[5].weather[0].icon}.png`}
           label1={weather.daily[5].temp.min}
           label2={weather.daily[5].temp.max}
+          dayweek = "5"
         />
 
         <Day 
@@ -115,17 +127,20 @@ function App() {
           image={`http://openweathermap.org/img/wn/${weather.daily[6].weather[0].icon}.png`}
           label1={weather.daily[6].temp.min}
           label2={weather.daily[6].temp.max}
+          dayweek = "6"
         />
         
       </div>
-      
+     
       </div>
-      
+    
       <Switch>
-        <Route path="/day1" exact component={Day1} />
-        <Route path="/day2" exact component={Day2} />
+        <Route path="/day/:nDay" exact component={DayDetails} />
+        {/* <Route path="/Home" exact > </Route> */}
       </Switch>
-  
+      <footer>
+      <Footer/>
+      </footer>
       </Router>
       
     );

@@ -1,6 +1,8 @@
 .weatherList {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 5px;
+  
 }
 
 .testcss{
@@ -21,8 +23,9 @@
 
 }
 
-.app{
+body{
   background-color: #EAE7E6;
+  
 }
 
 .text{
