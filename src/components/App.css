@@ -2,3 +2,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+.testcss{
+  margin : auto;
+  /* display:flex; */
+  /* text-align: end; */
+  width: 200px;
+  height: 200px;
+  border : solid;
+}
+
+.logo{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 150px;
+
+}
+
+.app{
+  background-color: #EAE7E6;
+}
+
+.text{
+  text-align: center;
+}

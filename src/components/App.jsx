@@ -3,14 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Day from './Day.jsx';
+import Day1 from './day1.jsx'
+import Day2 from './day2.jsx'
 import './App.css';
-import Home from '/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/components/Home.jsx';
-import About from '/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/components/About.jsx';
 import { useState } from 'react'
 import { useEffect} from 'react'
+import logo from "/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/components/weatherIMG.jpg"
+
 /*
 const name = document.getElementById('name')
     fetch("http://api.openweathermap.org/data/2.5/weather?q=paris&appid=8508a7c28350e562ec59a3d1a2bb6ee2")
@@ -49,40 +50,36 @@ function App() {
       [],
     )
 
-
-  //console.log(weather.daily[0])
-    //name.src =data[0].url
-  //https://i.pinimg.com/originals/d9/d2/82/d9d282bfd1842ef06e706a12679e7e49.jpg
-
-
   if(!weather){ //conditionnal rendering
     return <p></p>
   }else{
   
   console.log(weather.daily)
-  console.log(Home())
+
     return (
       <Router>
-      <div>
+      <div className="app">
+      
         <header className="App-header">
+        <img src={logo} className="logo" alt="logo"/>
+        <p className="text">Developed by Léo from 💙  </p>
         </header>
+
         <div className='weatherList'>
         <Day 
           day={timestamps(weather.daily[0].dt)}
           image={`http://openweathermap.org/img/wn/${weather.daily[0].weather[0].icon}.png`}
           label1={weather.daily[0].temp.min}
           label2={weather.daily[0].temp.max}
-          texte = "More informations"
-          inf ='dd '
+          dayweek = "day1"
         />
-  
+
         <Day 
           day={timestamps(weather.daily[1].dt)}
           image={`http://openweathermap.org/img/wn/${weather.daily[1].weather[0].icon}.png`}
           label1={weather.daily[1].temp.min}
           label2={weather.daily[1].temp.max}
-          texte = "More informations"
-          
+          dayweek = "day2"
         />
 
         <Day 
@@ -121,8 +118,16 @@ function App() {
         />
         
       </div>
+      
       </div>
+      
+      <Switch>
+        <Route path="/day1" exact component={Day1} />
+        <Route path="/day2" exact component={Day2} />
+      </Switch>
+  
       </Router>
+      
     );
   }
 }

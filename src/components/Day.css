@@ -1,0 +1,9 @@
+.Day{
+    border:solid;
+    box-shadow: 10px 5px 5px black;
+}
+
+.centerDay{
+    text-align: center;
+}
+
