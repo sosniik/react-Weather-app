@@ -1,11 +1,13 @@
 import React from "react";
 import './TopNav.css';
+import {
+    Link
+} from 'react-router-dom'
 
 const TopNav = () => {
     return(
         <nav className="navbar">
-            <span className="navbar-brand">Welcome to Weather App</span>
-            <p> </p>
+             <span className="navbar-brand">Welcome to Weather App</span>
         </nav>
 
     );

@@ -10,8 +10,11 @@ import TopNav from './TopNav.jsx'
 import DayDetails from './DayDetails'
 import { useState } from 'react'
 import { useEffect} from 'react'
-import logo from '/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/img/logo.png'
+//import logo from '/Users/leolemercier/Documents/cours_efrei/weather_app/weather/src/img/logo.png'
 import Footer from './Footer.jsx'
+import Toggle from './Toggle.jsx'
+import Child from './Child.jsx'
+import SearchBar from './searchBar'
 
 function getCurrentDate(separator='.'){
 
@@ -39,7 +42,7 @@ function timestamps(dt){
     }
 
   
-function App() {
+function App(props) {
 
     
     const [weather, setWeather] = useState(null)
@@ -59,20 +62,26 @@ function App() {
   if(!weather){ //conditionnal rendering
     return <p></p>
   }else{
-  
+  console.log("voici un test props ")
   console.log(weather.daily)
-
     return (
       <Router>
       <div className="app">
       
         <header className="App-header">
         <TopNav/>
-        <img src={logo} className="logo" alt="logo"/>
+        {/* <img src={logo} className="logo" alt="logo"/> */}
         <p className="text">Developed by Léo from 💙  </p>
+        
+        <SearchBar
+        item="efrei Paris"
+        />
+
         <p>Current date : {getCurrentDate()}</p>
         </header>
-
+        <div>
+          {/* <p>coucou {SearchBar(text)}</p> */}
+        </div>
         <div className='weatherList'>
         <Day 
           day={timestamps(weather.daily[0].dt)}

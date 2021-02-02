@@ -18,3 +18,4 @@ function placeMarker(location) {
   inputLatitude.value=location.lat();
   inputLongitude.value=location.lng();
 }
+
